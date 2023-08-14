@@ -1,9 +1,26 @@
 import { useState, useEffect } from "react";
 import Article from "./Article";
 
+type Flags = {
+  svg: string;
+};
+
+type Name = {
+  common: string;
+};
+
+type Countries = {
+  country: string[];
+  flags: Flags;
+  name: Name;
+  population: string;
+  region: string;
+  subregion: string;
+}[];
+
 export default function Countries() {
-  const [countries, setCountries] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [countries, setCountries] = useState<Countries>([]);
+  const [searchText, setSearchText] = useState<string>("");
   const regions = [
     {
       name: "Europe",
@@ -51,7 +68,7 @@ export default function Countries() {
     }
   };
 
-  const filterByRegion = async (region) => {
+  const filterByRegion = async (region: string) => {
     try {
       const res = await fetch(
         `https://restcountries.com/v3.1/region/${region}`

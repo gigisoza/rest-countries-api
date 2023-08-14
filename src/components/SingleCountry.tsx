@@ -1,8 +1,27 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+type Flags = {
+  svg: string;
+};
+
+type Name = {
+  common: string;
+  official: string;
+};
+
+type Country = {
+  population: string;
+  flags: Flags;
+  name: Name;
+  capital: string[];
+  region: string;
+  subregion: string;
+  borders: string[];
+}[];
+
 export default function SingleCountry() {
-  const [country, setCountry] = useState([]);
+  const [country, setCountry] = useState<Country>([]);
   const { name } = useParams();
 
   useEffect(() => {
