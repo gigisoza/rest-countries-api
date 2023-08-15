@@ -1,10 +1,12 @@
 import Countries from "./components/Countries";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleCountry from "./components/SingleCountry";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Countries />}></Route>
