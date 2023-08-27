@@ -6,8 +6,8 @@ import Header from "./components/Header";
 function App() {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Countries />}></Route>
           <Route path="/:name" element={<SingleCountry />}></Route>
