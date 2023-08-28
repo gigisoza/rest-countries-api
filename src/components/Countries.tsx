@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Article from "./Article";
+import Header from "./Header";
 
 type Flags = {
   svg: string;
@@ -92,6 +93,7 @@ export default function Countries() {
 
   return (
     <>
+      <Header />
       {!countries ? (
         <h1 className="text-gray-900 font-bold uppercase tracking-wide flex items-center justify-center text-center h-screen text-4xl dark:text-white">
           Loading...

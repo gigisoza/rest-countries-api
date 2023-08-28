@@ -1,18 +1,32 @@
 import Countries from "./components/Countries";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import SingleCountry from "./components/SingleCountry";
-import Header from "./components/Header";
+import NotFound from "./NotFound";
+import CountriesError from "./components/CountriesError";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path="/" element={<Countries />} />
+      <Route
+        path="/:name"
+        element={<SingleCountry />}
+        errorElement={<CountriesError />}
+      />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Countries />}></Route>
-          <Route path="/:name" element={<SingleCountry />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 }
